@@ -1,0 +1,38 @@
+/* https: //www.clicktorelease.com/code/css3dclouds/#*/
+.background {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000px;
+    -o-perspective: 1000;
+    perspective: 1000px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-image: linear-gradient(bottom, rgb(69, 132, 180) 28%, rgb(31, 71, 120) 64%);
+    background-image: -o-linear-gradient(bottom, rgb(69, 132, 180) 28%, rgb(31, 71, 120) 64%);
+    background-image: -moz-linear-gradient(bottom, rgb(69, 132, 180) 28%, rgb(31, 71, 120) 64%);
+    background-image: -webkit-linear-gradient(bottom, rgb(69, 132, 180) 28%, rgb(31, 71, 120) 64%);
+    background-image: -ms-linear-gradient(bottom, rgb(69, 132, 180) 28%, rgb(31, 71, 120) 64%);
+
+    background-image: -webkit-gradient(linear,
+            left bottom,
+            left top,
+            color-stop(0.28, rgb(69, 132, 180)),
+            color-stop(0.64, rgb(31, 71, 120)));
+}
+
+.topic_box_container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.topic_item {
+    background-color: #ffffff;
+    width: 600px;
+    height: 800px;
+}

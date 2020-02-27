@@ -4,6 +4,7 @@ import content from './db/data.json';
 import Topic from './components/topic';
 import PropTypes from 'prop-types';
 import Navigation from './components/Navigation';
+
 import {
 	Button,
 	Container,
@@ -36,50 +37,80 @@ function App() {
 	const onNavBarClick = name => {
 		console.log(name);
 		setCurrentView(name);
-		TopicContent();
+		TopicContent();	
 	};
+  
   
 	const TopicContent = ()=>{
 		const c = content.find((c) =>{if(c.title === currentView){return c;}
 		});
 		setTopic(c);
-		return(
-			<Responsive>
-				<Header
-					as='h1'
-					content={topic.title}
-					style={{
-						textAlign:'center',
-						fontSize:'4em',
-						fontWeight: 'normal',
-						marginTop:'1em',
-						marginBottom:'1em'
-					}}/>
-				<Container 
-					style={{
-						textAlign:'center',
-					}}>
-					{topic.text}
-				</Container>
-			</Responsive>
-		);	};
-    
-
-
+		console.log(c.title);
+		if(!c.title.includes('About')){
+			return(
+				<Responsive>
+					<Header
+						as='h1'
+						content={topic.title}
+						style={{
+							textAlign:'center',
+							fontSize:'4em',
+							fontWeight: 'normal',
+							marginTop:'1em',
+							marginBottom:'1em'
+						}}/>
+					<Container 
+						style={{
+							textAlign:'center',
+						}}>
+						{topic.text}
+					</Container>
+				</Responsive>
+			);
+		}else{
+			return(
+				<Responsive>
+					<Header
+						as='h1'
+						content={topic.title}
+						style={{
+							textAlign:'center',
+							fontSize:'2em',
+							fontWeight: 'normal',
+							marginTop:'1em',
+							marginBottom:'1em'
+						}}/>
+					<Container 
+						style={{
+							textAlign:'center',
+						}}>
+						{topic.text}
+					</Container>
+					<List link>
+						<List.Item as='a'>{c.location}</List.Item>
+						<List.Item as='a'>{'blah at blah'}</List.Item>
+						<List.Item as='a'>{c.date}</List.Item>
+					</List>
+				</Responsive>
+			);	
+		}
+			
+	};
+  
 	return (
-		<Grid columns={2} divided>
-			<Grid.Row stretched>
-				<Grid.Column width={3}>
-					<Navigation content={content} onNavBarClick={onNavBarClick}/>
-				</Grid.Column>
-				<Grid.Column>
-					<Segment>
-						<Image fluid rounded src={getImage(topic.title)}/>
-						<TopicContent/>
-					</Segment>
-				</Grid.Column>
-			</Grid.Row>
+		
+		<Grid  columns={2} textAlign='center'>
+			<Grid.Column width={2}>
+				<Navigation content={content} onNavBarClick={onNavBarClick}/>
+			</Grid.Column>
+			<Grid.Column>
+				<Segment style={{}}>
+					<Image fluid rounded src={getImage(topic.title)}/>
+					<TopicContent/>
+				</Segment>
+			</Grid.Column>
 		</Grid>
+
 
 	
 	);

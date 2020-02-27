@@ -61,7 +61,8 @@ function App() {
 						}}/>
 					<Container 
 						style={{
-							textAlign:'center',
+							textAlign:'left',
+							fontSize:'15px',
 						}}>
 						{topic.text}
 					</Container>
@@ -70,6 +71,7 @@ function App() {
 		}else{
 			return(
 				<Responsive>
+					<Divider />
 					<Header
 						as='h1'
 						content={topic.title}
@@ -98,19 +100,40 @@ function App() {
 	};
   
 	return (
-		
-		<Grid  columns={2} textAlign='center'>
-			<Grid.Column width={2}>
-				<Navigation content={content} onNavBarClick={onNavBarClick}/>
-			</Grid.Column>
-			<Grid.Column>
-				<Segment style={{}}>
-					<Image fluid rounded src={getImage(topic.title)}/>
-					<TopicContent/>
-				</Segment>
-			</Grid.Column>
-		</Grid>
-
+		<> 
+			<Segment
+				inverted
+				textAlign='center'
+				style={{ minHeight: 50, padding: '1em 0em' }}
+				vertical
+			>
+				<Container text>
+					<Header
+						as='h1'
+						inverted
+						content='Global Shapers'
+						style={{
+							fontSize:'4em',
+							fontWeight: 'normal',
+							marginBottom: '0em',
+							marginTop:'0em',
+						}}
+					/>
+				</Container>
+			</Segment>
+			
+			<Grid  columns={2} textAlign='center'>
+				<Grid.Column width={2}>
+					<Navigation content={content} onNavBarClick={onNavBarClick}/>
+				</Grid.Column>
+				<Grid.Column>
+					<Segment stacked style={{}}>
+						<Image centered size='huge' rounded src={getImage(topic.title)}/>
+						<TopicContent/>
+					</Segment>
+				</Grid.Column>
+			</Grid>
+		</>
 
 	
 	);
